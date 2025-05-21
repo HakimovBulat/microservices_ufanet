@@ -12,7 +12,7 @@ import (
 var db *gorm.DB
 
 func RunApp() {
-	engine := html.New("../web/templates", ".html")
+	engine := html.New("./web/templates", ".html")
 
 	dsn := "host=localhost user=postgres password=postgres dbname=postgres port=5432 sslmode=disable"
 	var err error
