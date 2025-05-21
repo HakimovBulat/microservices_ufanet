@@ -1,0 +1,31 @@
+<html>
+<head>
+    <title>Скидки для абонентов Уфанет</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css' %}"/>
+    <meta charset="utf-8">
+</head>
+<body>  
+    <header>
+        <div class="left-text">
+            <h1 id="ufanet-title">Ufanet</h1>
+        </div>
+        <div class="right-text">
+            {% if user.is_authenticated %}
+                <h2 id="ufanet-title">{{ user.username }}</р>
+                <form method="post" action="{% url 'logout' %}">
+                    {% csrf_token %}
+                    <button type="submit" id="logout-btn">Выйти из аккаунта</button>
+                </form>
+            {% else %}
+                <a id="ufanet-title" href="{% url 'login' %}"><h2>Войти</h2></a>
+            {% endif %}
+        </div>
+    </header>
+
+    {% block content %}
+    <!-- base template -->
+    {% endblock content %}
+
+</body>
+</html>

@@ -1,0 +1,9 @@
+.github
+.idea
+*.md
+*.txt
+*.log
+*.png
+docker
+certs
+Dockerfile

@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+<form action="{% url 'billboard:index'%}" method="post">
+    {% csrf_token %}
+    <input type="search" placeholder="Поиск предложений" id="sale_search" name="sale_search" />
+    <button>Найти</button>
+</form>
+{% if categories %}
+    <h2 id="ufanet-title">Скидки от партнеров</h2>
+{% endif %}
+{% for category in categories %}
+    <a href="{% url 'billboard:category_sales' category.pk %}">
+        <div class="wrapper">
+            <button>
+            <div>
+                <img class="img-center" src="{{ category.photo.url }}"/>
+                {{ category.title }} <br>
+                {% if category.sale_set.count > 0 %}
+                    <p> Количество предложений: {{ category.sale_set.count }}</p>    
+                {% else %}
+                    <p>Предложений нет</p>
+                {% endif %}
+            </div>
+            </button>
+        </div>
+    </a>
+{% endfor %}
+<h2 id="ufanet-title">Предложения</h2>
+{% if sales %}
+{% for sale in sales %}
+    <a href="{% url 'billboard:sale_info' sale.pk %}">
+        <div class="wrapper">
+            <button>
+                <div>
+                <img class="img-center" src="{{ sale.photo.url }}"/>
+                {{ sale.title }} <br>
+                {{ sale.subtitle }} <br>
+                {{ sale.abour_partner }} <br>
+                </div>
+            </button>
+        </div>
+    </a>
+{% endfor %}
+{% else %}
+<p> Поищите что нибудь другое</p>
+{% endif %}
+
+{% endblock content %}

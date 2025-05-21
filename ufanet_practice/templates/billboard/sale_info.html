@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+<a href="{% url 'billboard:category_sales' sale.category.pk %}">&lt; Назад</a>
+<div class="wrapper">
+    <div>
+        <img class="img-center" src="{{ sale.photo.url }}"/>
+        <h2>{{ sale.title }} </h2>
+
+        {% if sale.subtitle %} 
+            <h3>{{ sale.subtitle }} </h3> <br>
+        {% endif %}
+
+        {% if sale.url %}
+            <a href="{{sale.url}}">
+                <button class="button_url"> Перейти на сайт </button>
+            </a> <br>
+        {% endif %}
+
+        {% if sale.promocode %}
+            <h2>Промокод</h2>
+            <p>{{ sale.promocode }} </p>
+        {% endif %}
+
+        <h2>Как получить</h2>
+        <p>{{ sale.description }} </p>
+
+        <h2>О партнере</h2>
+        <p>{{ sale.about_partner }} </p>
+    </div>
+</div>
+{% endblock content %}

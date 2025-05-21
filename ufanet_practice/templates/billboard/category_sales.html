@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<div>
+    <h2 id="ufanet-title">{{ category_title }}</h2>
+</div>
+<a href="{% url 'billboard:index'%}">&lt; Назад</a>
+{% if sales %}
+{% for sale in sales %}
+    <a href="{% url 'billboard:sale_info' sale.pk %}">
+        <div class="wrapper">
+            <button>
+                <div>
+                    <img class="img-center" src="{{ sale.photo.url }}"/>
+                    <p>{{ sale.title }} </p>
+                    <p>{{ sale.subtitle }} </p>
+                    <p>{{ sale.abour_partner }} </p>
+                </div>
+            </button>
+        </div>
+    </a>
+{% endfor %}
+{% else %}
+<p>Здесь пока нет предложений, <a href="{% url 'billboard:index' %}"> лучше перейдите на главную страницу</a></p>
+{% endif %}
+{% endblock content %}

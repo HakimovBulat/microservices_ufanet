@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Войти в аккаунт</h2>
+<p>Чтобы воспользоваться возможностями сайта - необходимо войти в систему</p>
+<p><a href="{% url 'account:register' %}">Нет аккаунта?</a></p>
+<form method="post">
+  {% csrf_token %}
+
+  <input type="hidden" name="next" value="{{ next }}" />
+  <div>{{ form.non_field_errors }}</div>
+  {% for field in form %}
+    <p><label for="{{ field.id_for_label }}">{{field.label}}: </label>{{ field }}</p>
+    <div>{{ field.errors }}</div>
+  {% endfor %}
+  <p><button type="submit">Вход в систему</button></p>
+</form>
+{% endblock content %}
