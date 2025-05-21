@@ -16,7 +16,7 @@
     <body>
         <h2>Самые популярные скидки:</h2>
         {{range .popularitySalesStruct}}
-            <p>{{.Struct.Title}} Просмотры: {{.View}}</p>
+            <p><a href="/sale/{{.Struct.Id}}">{{.Struct.Title}}</a> Просмотры: {{.View}}</p>
         {{end}}
         <h2>Последние запросы к скидкам</h2>
 

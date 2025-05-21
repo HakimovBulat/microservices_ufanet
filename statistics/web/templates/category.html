@@ -16,7 +16,7 @@
     <body>
         <h2>Самые популярные категории:</h2>
         {{range .popularityCategoriesStruct}}
-            <p>{{.Struct.Title}} Просмотры: {{.View}}</p>
+            <p><a href="/category/{{.Struct.Id}}">{{.Struct.Title}}</a> Просмотры: {{.View}}</p>
         {{end}}
         <h2>Последние запросы к категориям</h2>
 
