@@ -30,6 +30,7 @@ func RunApp() {
 	app.Get("/sale", SaleHandler)
 
 	app.Get("/category/:id", GetCategory)
+
 	app.Get("/sale/:id", GetSale)
 
 	log.Fatal(app.Listen(":3000"))
