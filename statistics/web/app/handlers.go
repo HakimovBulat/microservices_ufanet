@@ -32,7 +32,7 @@ func IndexHandler(c fiber.Ctx) error {
 }
 
 func SaleHandler(c fiber.Ctx) error {
-	ctx, cancel := context.WithTimeout(ctxBackground, 5*time.Second)
+	ctx, cancel := context.WithTimeout(ctxBackground, 500*time.Millisecond)
 	defer cancel()
 
 	saleMessages, popularitySalesStruct := getMessagesTopic[Sale]("wal_listener.public_billboard_sale", ctx)
@@ -44,7 +44,7 @@ func SaleHandler(c fiber.Ctx) error {
 }
 
 func CategoryHandler(c fiber.Ctx) error {
-	ctx, cancel := context.WithTimeout(ctxBackground, 5*time.Second)
+	ctx, cancel := context.WithTimeout(ctxBackground, 500*time.Millisecond)
 	defer cancel()
 
 	categoryMessages, popularityCategoriesStruct := getMessagesTopic[Category]("wal_listener.public_billboard_category", ctx)

@@ -19,7 +19,6 @@
             <p><a href="/category/{{.Struct.Id}}">{{.Struct.Title}}</a> Просмотры: {{.View}}</p>
         {{end}}
         <h2>Последние запросы к категориям</h2>
-
         <h3>Просмотр</h3>
         <table>
             <tr>
@@ -28,7 +27,7 @@
                 <td>Photo</td>
                 <td>Action</td>
                 <td>Table</td>
-                <td>CommitTime</td> <br>
+                <td>CommitTime</td>
             </tr>
             {{ range .categoryMessages }}
             {{if eq .Action "SELECT"}}
@@ -38,7 +37,7 @@
                 <td>{{.Data.Photo}}</td>
                 <td>{{.Action}}</td>
                 <td>{{.Table}}</td>
-                <td>{{.CommitTime}}</td> <br>
+                <td>{{.CommitTime}}</td>
             </tr>
             {{end}}
             {{end}}

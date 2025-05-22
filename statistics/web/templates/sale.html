@@ -34,7 +34,7 @@
                 <td>Url</td>
                 <td>Action</td>
                 <td>Table</td>
-                <td>CommitTime</td> <br>
+                <td>CommitTime</td>
             </tr>
             {{ range .saleMessages }}
             {{if eq .Action "SELECT"}}
@@ -50,7 +50,7 @@
                 <td>{{.Data.Url}}</td>
                 <td>{{.Action}}</td>
                 <td>{{.Table}}</td>
-                <td>{{.CommitTime}}</td> <br>
+                <td>{{.CommitTime}}</td>
             </tr>
             {{end}}
             {{end}}
