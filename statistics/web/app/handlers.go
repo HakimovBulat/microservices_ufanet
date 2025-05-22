@@ -57,6 +57,7 @@ func CategoryHandler(c fiber.Ctx) error {
 func getMessagesTopic[T SaleCategory](topic string, ctx context.Context) ([]Message[T], []Popularity[T]) {
 	reader := kafka.NewReader(kafka.ReaderConfig{
 		Brokers: []string{"localhost:29092"},
+		MaxWait: 1 * time.Second,
 		Topic:   topic,
 	})
 	defer reader.Close()
