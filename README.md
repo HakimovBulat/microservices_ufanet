@@ -25,4 +25,4 @@
 `go run cmd/main.go`<br>
 
 Для запуска проекта ufanet_practice необходимо ввести следующую команду (находясь в папке ufanet_practice) в терминале: <br>
-`python manage.py runserver`
+`docker compose up --build`
