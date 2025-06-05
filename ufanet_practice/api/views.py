@@ -3,7 +3,6 @@ from billboard.models import Sale, Category
 from .serializers import SaleSerializer, CategorySerializer
 from django.views.decorators.cache import cache_page
 from django.utils.decorators import method_decorator
-from django.contrib.auth.decorators import login_required
 from rest_framework.permissions import IsAuthenticated
 
 

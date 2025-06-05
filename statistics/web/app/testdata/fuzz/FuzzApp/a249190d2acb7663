@@ -1,0 +1,2 @@
+go test fuzz v1
+[]byte("е\xb8каты\"\xad\x11\x89L\xd0")

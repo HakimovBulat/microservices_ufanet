@@ -1,7 +1,11 @@
 package main
 
-import "statistics/web/app"
+import (
+	"log"
+	"statistics/web/app"
+)
 
 func main() {
-	app.RunApp()
+	app := app.Setup()
+	log.Fatal(app.Listen(":3000"))
 }

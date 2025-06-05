@@ -1,0 +1,23 @@
+mode: set
+statistics/cmd/main.go:8.13,11.2 2 0
+statistics/web/app/app.go:14.25,19.16 5 1
+statistics/web/app/app.go:19.16,21.3 1 0
+statistics/web/app/app.go:23.2,34.12 7 1
+statistics/web/app/handlers.go:18.37,22.2 3 1
+statistics/web/app/handlers.go:24.33,28.2 3 1
+statistics/web/app/handlers.go:30.38,32.2 1 1
+statistics/web/app/handlers.go:34.37,44.2 4 1
+statistics/web/app/handlers.go:46.41,55.2 4 1
+statistics/web/app/handlers.go:57.106,68.6 5 1
+statistics/web/app/handlers.go:68.6,70.17 2 1
+statistics/web/app/handlers.go:70.17,72.9 2 1
+statistics/web/app/handlers.go:75.3,76.61 2 1
+statistics/web/app/handlers.go:76.61,78.4 1 0
+statistics/web/app/handlers.go:80.3,80.33 1 1
+statistics/web/app/handlers.go:80.33,82.4 1 1
+statistics/web/app/handlers.go:84.3,84.39 1 1
+statistics/web/app/handlers.go:87.2,88.37 2 1
+statistics/web/app/handlers.go:88.37,90.3 1 1
+statistics/web/app/handlers.go:92.2,92.51 1 1
+statistics/web/app/handlers.go:92.51,94.3 1 1
+statistics/web/app/handlers.go:96.2,97.35 2 1

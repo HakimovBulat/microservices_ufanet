@@ -1,8 +1,6 @@
 package models
 
 import (
-	"context"
-
 	"github.com/gofrs/uuid"
 )
 
@@ -19,8 +17,6 @@ type Message[T SaleCategory] struct {
 	CommitTime string    `json:"commitTime"`
 	Table      string    `json:"table"`
 }
-
-var ctxBackground = context.Background()
 
 type Sale struct {
 	Id           int    `json:"id"`

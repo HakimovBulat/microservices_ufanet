@@ -2,6 +2,7 @@ package app
 
 import (
 	"log"
+	"runtime"
 
 	"github.com/gofiber/fiber/v3"
 	"github.com/gofiber/template/html/v2"
@@ -11,8 +12,12 @@ import (
 
 var db *gorm.DB
 
-func RunApp() {
+func Setup() *fiber.App {
+	pc, _, _, _ := runtime.Caller(1)
 	engine := html.New("./web/templates", ".html")
+	if runtime.FuncForPC(pc).Name() != "main.main" {
+		engine = html.New("templates", ".html")
+	}
 
 	dsn := "host=localhost user=postgres password=postgres dbname=postgres port=5432 sslmode=disable"
 	var err error
@@ -26,12 +31,21 @@ func RunApp() {
 	})
 
 	app.Get("/", IndexHandler)
-	app.Get("/category", CategoryHandler)
-	app.Get("/sale", SaleHandler)
+	app.Get("/category", CategoryStatistics)
+	app.Post("/sale", PostSaleStatistics)
+	app.Post("/category", PostCategoryStatistics)
+	app.Get("/sale", SaleStatistics)
 
-	app.Get("/category/:id", GetCategory)
+	app.Post("/api/sale", PostSale)
+	app.Post("/api/category", PostCategory)
 
-	app.Get("/sale/:id", GetSale)
+	app.Get("/api/category/:id", GetCategory)
+	app.Get("/api/sale/:id", GetSale)
 
-	log.Fatal(app.Listen(":3000"))
+	app.Get("/api/sale", GetSaleList)
+	app.Get("/api/category", GetCategoryList)
+
+	app.Delete("/api/sale/:id", DeleteSale)
+	app.Delete("/api/category/:id", DeleteCategory)
+	return app
 }

@@ -6,10 +6,12 @@ from confluent_kafka import Producer
 import json
 from django.forms.models import model_to_dict
 import datetime
+import logging
 import uuid
+from django.shortcuts import get_object_or_404
+
 
 conf = {'bootstrap.servers': 'localhost:29092'}
-
 producer = Producer(conf)
 
 TOPIC_SALE = 'wal_listener.public_billboard_sale'
@@ -17,7 +19,6 @@ TOPIC_CATEGORY = 'wal_listener.public_billboard_category'
 
 def model_to_json(model):
     data_model = model_to_dict(model)
-    print(str(uuid.uuid1()))
     json_data = {
         "id": uuid.uuid1(),
         "data": data_model,
@@ -37,6 +38,8 @@ def model_to_json(model):
 
 
 def post_to_topic(model, topic):
+    if model.title == "Тестовая скидка" or model.title == "Тестовая категория":
+        topic = "billboard_test"
     producer.produce(topic, value=model_to_json(model), callback=delivery_report)
     producer.poll(0)
     producer.flush()
@@ -76,7 +79,7 @@ def index(request):
 
 @login_required
 def category_sales(request, pk):
-    category = Category.objects.get(pk=pk)
+    category = get_object_or_404(Category, pk=pk)
     context = {
         "category_title": category.title,
         "sales": category.sale_set.all()
@@ -87,7 +90,7 @@ def category_sales(request, pk):
 
 @login_required
 def sale_info(request, sale_pk):
-    sale = Sale.objects.get(pk=sale_pk)
+    sale = get_object_or_404(Sale, pk=sale_pk)
     context = {
         "sale": sale
     }
